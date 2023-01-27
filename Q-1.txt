@@ -1,0 +1,10 @@
+select year, sum (distance) Total_distance from [dbo].[flights$]
+where year = '2013'
+group by year
+
+ 
+select year,month,sum (distance)  from [dbo].[flights$]
+where year = '2013'
+and month= '1' 
+and tailnum=''
+group by year,month

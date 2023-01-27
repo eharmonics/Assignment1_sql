@@ -1,0 +1,26 @@
+select manufacturer, sum (distance) Distance
+from (
+select * from [dbo].[flights$] a inner join (select tailnum tailnum_b, manufacturer from [dbo].[planes$] ) b on (a.tailnum= b.tailnum_b)
+where year = '2013'
+and month= '7' 
+and day = '5'
+) aa
+group by manufacturer
+order by 1
+
+
+
+select manufacturer, sum (distance) Distance
+from (
+select * from [dbo].[flights$] a left join (select tailnum tailnum_b, manufacturer from [dbo].[planes$] ) b on (a.tailnum= b.tailnum_b)
+where year = '2013'
+and month= '7' 
+and day = '5'
+) aa
+group by manufacturer
+order by 1
+
+
+
+
+Answer : writing sql with Inner Join & Left join we sal one additional rows for Left Join which is null with distance 127671

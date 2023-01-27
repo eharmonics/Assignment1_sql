@@ -1,0 +1,11 @@
+Which airlines and which manufacturer flew Highest Distance in 2013 : ANswer = United Air Lines Inc. and Manufacturer = BOEING
+
+select name Airlines_Name,manufacturer, sum (distance) Distance
+from (
+select * from [dbo].[flights$] a inner join (select tailnum tailnum_b, manufacturer from [dbo].[planes$] ) b 
+on (tailnum= tailnum_b) inner join (select carrier carrier_C ,name from [dbo].[airlines$]) c
+on( a.carrier=carrier_C)
+where year = '2013'
+) aa
+group by name,manufacturer
+order by 3 desc
